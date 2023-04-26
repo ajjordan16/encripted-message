@@ -16,7 +16,7 @@ input.onButtonPressed(Button.B, function () {
     }
 })
 input.onGesture(Gesture.Shake, function () {
-    radio.sendString("" + (alphabet[Pos]))
+    radio.sendString("" + (alphabet[Pos + 3]))
 })
 let Pos = 0
 let alphabet: string[] = []
@@ -48,7 +48,10 @@ alphabet = [
 "x",
 "y",
 "z",
-"_"
+"_",
+"a",
+"b",
+"c"
 ]
 radio.setGroup(1)
 Pos = 0
