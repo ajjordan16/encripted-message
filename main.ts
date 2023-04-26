@@ -1,11 +1,19 @@
 input.onButtonPressed(Button.A, function () {
-    Pos += 1
+    if (Pos == 26) {
+        Pos = 0
+    } else {
+        Pos += 1
+    }
 })
 radio.onReceivedString(function (receivedString) {
     basic.showString(receivedString)
 })
 input.onButtonPressed(Button.B, function () {
-    Pos += -1
+    if (Pos == 0) {
+        Pos = 26
+    } else {
+        Pos += -1
+    }
 })
 input.onGesture(Gesture.Shake, function () {
     radio.sendString("" + (alphabet[Pos]))
