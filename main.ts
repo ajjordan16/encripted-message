@@ -1,25 +1,35 @@
 input.onButtonPressed(Button.A, function () {
-    if (Pos == 26) {
+    if (Pos == 25) {
         Pos = 0
     } else {
         Pos += 1
     }
 })
 radio.onReceivedString(function (receivedString) {
-    basic.showString(receivedString)
+    basic.clearScreen()
+    basic.showString("" + (alphabet[alphabet.indexOf(receivedString) - Key]))
 })
 input.onButtonPressed(Button.B, function () {
     if (Pos == 0) {
-        Pos = 26
+        Pos = 25
     } else {
         Pos += -1
     }
 })
 input.onGesture(Gesture.Shake, function () {
-    radio.sendString("" + (alphabet[Pos + 3]))
+    if (Pos + Key > 25) {
+        radio.sendString("" + (alphabet[0]))
+    } else {
+    	
+    }
 })
-let Pos = 0
 let alphabet: string[] = []
+let Pos = 0
+let Key = 0
+let PosKey = 0
+Key = 3
+Pos = 0
+radio.setGroup(1)
 radio.sendNumber(0)
 alphabet = [
 "a",
@@ -47,14 +57,9 @@ alphabet = [
 "w",
 "x",
 "y",
-"z",
-"_",
-"a",
-"b",
-"c"
+"z"
 ]
-radio.setGroup(1)
-Pos = 0
 basic.forever(function () {
     basic.showString("" + (alphabet[Pos]))
+    PosKey = Pos + Key
 })
